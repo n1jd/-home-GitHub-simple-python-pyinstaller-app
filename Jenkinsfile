@@ -1,10 +1,10 @@
 pipeline {
-    agent none 
+    agent any 
     stages {
         stage('Build') { 
-            agent {
+            
                 echo "This is a first application"
-                }
+                
             }
             steps {
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py' 
@@ -12,4 +12,3 @@ pipeline {
             }
         }
     }
-}
