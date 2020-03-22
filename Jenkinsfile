@@ -9,6 +9,7 @@ pipeline {
     }
 
     stages {
+        {
         stage('Build') {
             steps {
                 echo "Database engine is ${DB_ENGINE}"
