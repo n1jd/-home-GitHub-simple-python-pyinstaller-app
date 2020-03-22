@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             agent {
-                docker {
-                    image 'python:2-alpine' 
+                echo "This is a first application"
                 }
             }
             steps {
