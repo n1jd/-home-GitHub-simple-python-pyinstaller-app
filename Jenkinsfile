@@ -1,14 +1,18 @@
 pipeline {
-    agent any 
+    agent any
     stages {
-        stage('Build') { 
-            
-                echo "This is a first application"
-                
-            }
+        stage('Test') {
             steps {
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py' 
-                stash(name: 'compiled-results', includes: 'sources/*.py*') 
+                sh 'make check'
             }
         }
     }
+    post {
+        always {
+            junit '**/target/*.xml'
+        }
+        failure {
+            mail to: njauhari25.com, subject: 'The Pipeline failed :('
+        }
+    }
+}
